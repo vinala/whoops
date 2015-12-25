@@ -1,5 +1,5 @@
 {
-    "name": "fiesta-framework/whoops",
+    "name": "fiesta/whoops",
     "license": "MIT",
     "description": "php error handling for cool kids",
     "keywords": ["library", "error", "handling", "exception", "whoops", "zf2"],
