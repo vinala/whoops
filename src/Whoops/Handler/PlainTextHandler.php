@@ -8,6 +8,7 @@
 
 namespace Whoops\Handler;
 
+use Exception;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Whoops\Exception\Frame;
@@ -22,9 +23,12 @@ class PlainTextHandler extends Handler
     const VAR_DUMP_PREFIX = '   | ';
 
     /**
-     * @var \Psr\Log\LoggerInterface
+     * @var Psr\Log\LoggerInterface
      */
     protected $logger;
+
+    public $msg;
+    public $bg_color;
 
     /**
      * @var bool
@@ -44,12 +48,22 @@ class PlainTextHandler extends Handler
     /**
      * @var bool
      */
+    private $onlyForCommandLine = false;
+
+    /**
+     * @var bool
+     */
+    private $outputOnlyIfCommandLine = true;
+
+    /**
+     * @var bool
+     */
     private $loggerOnly = false;
 
     /**
      * Constructor.
      * @throws InvalidArgumentException     If argument is not null or a LoggerInterface
-     * @param  \Psr\Log\LoggerInterface|null $logger
+     * @param  Psr\Log\LoggerInterface|null $logger
      */
     public function __construct($logger = null)
     {
@@ -59,7 +73,7 @@ class PlainTextHandler extends Handler
     /**
      * Set the output logger interface.
      * @throws InvalidArgumentException     If argument is not null or a LoggerInterface
-     * @param  \Psr\Log\LoggerInterface|null $logger
+     * @param  Psr\Log\LoggerInterface|null $logger
      */
     public function setLogger($logger = null)
     {
@@ -76,7 +90,7 @@ class PlainTextHandler extends Handler
     }
 
     /**
-     * @return \Psr\Log\LoggerInterface|null
+     * @return Psr\Log\LoggerInterface|null
      */
     public function getLogger()
     {
@@ -140,6 +154,34 @@ class PlainTextHandler extends Handler
     }
 
     /**
+     * Restrict error handling to command line calls.
+     * @param  bool|null $onlyForCommandLine
+     * @return null|bool
+     */
+    public function onlyForCommandLine($onlyForCommandLine = null)
+    {
+        if (func_num_args() == 0) {
+            return $this->onlyForCommandLine;
+        }
+        $this->onlyForCommandLine = (bool) $onlyForCommandLine;
+    }
+
+    /**
+     * Output the error message only if using command line.
+     * else, output to logger if available.
+     * Allow to safely add this handler to web pages.
+     * @param  bool|null $outputOnlyIfCommandLine
+     * @return null|bool
+     */
+    public function outputOnlyIfCommandLine($outputOnlyIfCommandLine = null)
+    {
+        if (func_num_args() == 0) {
+            return $this->outputOnlyIfCommandLine;
+        }
+        $this->outputOnlyIfCommandLine = (bool) $outputOnlyIfCommandLine;
+    }
+
+    /**
      * Only output to logger.
      * @param  bool|null $loggerOnly
      * @return null|bool
@@ -154,12 +196,31 @@ class PlainTextHandler extends Handler
     }
 
     /**
+     * Check, if possible, that this execution was triggered by a command line.
+     * @return bool
+     */
+    private function isCommandLine()
+    {
+        return PHP_SAPI == 'cli';
+    }
+
+    /**
+     * Test if handler can process the exception..
+     * @return bool
+     */
+    private function canProcess()
+    {
+        return $this->isCommandLine() || !$this->onlyForCommandLine();
+    }
+
+    /**
      * Test if handler can output to stdout.
      * @return bool
      */
     private function canOutput()
     {
-        return !$this->loggerOnly();
+        return ($this->isCommandLine() || ! $this->outputOnlyIfCommandLine())
+            && ! $this->loggerOnly();
     }
 
     /**
@@ -240,29 +301,78 @@ class PlainTextHandler extends Handler
      */
     public function handle()
     {
+        if (! $this->canProcess()) {
+            return Handler::DONE;
+        }
+
         $exception = $this->getException();
 
-        $response = sprintf("%s: %s in file %s on line %d%s\n",
-                get_class($exception),
-                $exception->getMessage(),
-                $exception->getFile(),
-                $exception->getLine(),
-                $this->getTraceOutput()
-            );
+        // $response = sprintf("%s: %s in file %s on line %d%s\n",
+        //         get_class($exception),
+        //         $exception->getMessage(),
+        //         $exception->getFile(),
+        //         $exception->getLine(),
+        //         // $this->getTraceOutput()
+        //         null
+        //     );
 
+        //var_dump($exception);
+        // echo "1";
         if ($this->getLogger()) {
             $this->getLogger()->error($response);
         }
 
+        if(! is_null ($exception)) 
+            {
+                $msg=$this->msg;
+                $bg_color=$this->bg_color;
+                //include_once '/core/Access/ErrorDisplayer/simple.php';
+                ?>
+                <head>
+                    <meta charset="utf-8"/>
+                    <title><?php echo $msg ?></title>
+                    <style type="text/css">
+                    body
+                    {
+                        background: #e9e9e9;
+                        background: <?php echo $bg_color ?>;
+                        margin: 0px;
+                        padding: 0px;
+                    }
+
+                    div 
+                    {
+                        box-shadow: 0px 3px 6px 3px rgba(0,0,0,0.2);
+                        border:1px solid gray;
+                        border-radius:5px;
+                        display: inline-block;
+                        padding:30px;
+                        font-size: 16px;
+                        font: 20px Georgia, "Times New Roman", Times, serif;
+                        width: 460px;
+                        margin: 60px auto;
+                        display: block;
+                        background: white;
+                    }
+                    </style>
+
+                </head>
+                <body>
+                    <div><?php echo $msg ?></div>
+                </body>
+
+                <?php
+
+            }
+        return Handler::QUIT;
         if (! $this->canOutput()) {
             return Handler::DONE;
         }
-
-        if (\Whoops\Util\Misc::canSendHeaders()) {
-            header('Content-Type: text/plain');
+        if (class_exists('\Whoops\Util\Misc')
+            && \Whoops\Util\Misc::canSendHeaders()) {
+            //header('Content-Type: html/text');
         }
-
-        echo $response;
+        //if(! is_null ($exception)) echo "fff";
 
         return Handler::QUIT;
     }
