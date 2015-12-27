@@ -132,7 +132,7 @@ header {
     }
 
     .frame-method-info {
-      margin-bottom: 10px;
+      background: #90CAF9;
     }
 
     .frame-class, .frame-function, .frame-index {
@@ -159,7 +159,7 @@ header {
     }
 
       .frame-file .editor-link {
-        color: #272727;
+        color: inherit;
       }
 
     .frame-line {
@@ -470,4 +470,111 @@ kbd {
 pre.sf-dump {
     padding: 0px !important;
     margin: 0px !important;
+}
+
+.mini_logo
+{
+  margin: 9px auto;
+  width: 39px;
+  display: block;
+}
+
+#sg-get-data>label
+{
+    margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #FF5722;
+   border-left:5px solid #E64A19;
+}
+
+#sg-get-data> table > tbody > tr:hover
+{
+   background-color:#FFCCBC;
+}
+
+#sg-post-data>label
+{
+    margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #0288D1;
+   border-left:5px solid #03A9F4;
+}
+
+#sg-post-data> table > tbody > tr:hover
+{
+   background-color:#B3E5FC;
+}
+
+#sg-session>label
+{
+    margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #FFC107;
+   border-left:5px solid #FFC107;
+
+}
+
+#sg-session> table > tbody > tr:hover
+{
+   background-color:#FFECB3;
+}
+
+#sg-files>label
+{
+   margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #689F38;
+   border-left:5px solid #8BC34A;
+}
+
+#sg-files> table > tbody > tr:hover
+{
+   background-color:#DCEDC8;
+}
+
+#sg-cookies>label
+{
+   margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #512DA8;
+   border-left:5px solid #673AB7;
+}
+
+#sg-cookies> table > tbody > tr:hover
+{
+   background-color:#D1C4E9;
+}
+
+#sg-serverrequest-data>label
+{
+   margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #d22e2e;
+   border-left: 5px solid #f34235;
+}
+
+#sg-serverrequest-data> table > tbody > tr:hover
+{
+   background-color:#FFCDD2;
+}
+
+#sg-environment-variables>label
+{
+   margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #9C27B0;
+   border-left: 5px solid #9C27B0;
+}
+
+#sg-serverrequest-variables> table > tbody > tr:hover
+{
+   background-color:#E1BEE7;
+}
+
+#handlers>label
+{
+   margin-bottom: 0px;
+   padding: 4px 9px;
+   color: #607D8B;
+   border-left: 5px solid #455A64;
 }

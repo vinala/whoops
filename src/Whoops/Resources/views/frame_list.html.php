@@ -15,3 +15,4 @@
     </span>
   </div>
 <?php endforeach ?>
+<img class="mini_logo" src="<?php echo Fiesta\Core\Glob\App::$root ?>vendor/fiesta/whoops/src/Whoops/Resources/images/logo.png"/>
