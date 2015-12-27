@@ -172,8 +172,9 @@ header {
 
     .frame-code {
       padding: 5px;
-      background: #303030;
+      background: #2a2a2a;
       display: none;
+      border-bottom:4px solid #F44336;
     }
 
     .frame-code.active {
