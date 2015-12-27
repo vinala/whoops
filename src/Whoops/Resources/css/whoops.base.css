@@ -128,11 +128,11 @@ header {
     }
 
     .frame:not(.active):hover {
-      background: #BEE9EA;
+      background: #90CAF9;
     }
 
     .frame-method-info {
-      background: #90CAF9;
+      /*background: #90CAF9;*/
     }
 
     .frame-class, .frame-function, .frame-index {
