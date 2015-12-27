@@ -41,7 +41,7 @@ header {
   padding: 35px 40px;
   max-height: 180px;
   overflow: hidden;
-  border-left: 5px solid green;
+  border-left: 5px solid #9b00dc;
 }
 
   header:hover {
