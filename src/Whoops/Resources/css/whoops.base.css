@@ -1,6 +1,11 @@
+@font-face {
+  font-family: 'segoe';
+  src: url('vendor/fiesta/whoops/src/Whoops/Resources/fonts/segoeuil.ttf') format('truetype');
+}
+
 .cf:before, .cf:after {content: " ";display: table;} .cf:after {clear: both;} .cf {*zoom: 1;}
 body {
-  font: 12px "Helvetica Neue", helvetica, arial, sans-serif;
+  font: 12px "segoe", helvetica, arial, sans-serif;
   color: #131313;
   background: #eeeeee;
   padding:0;
