@@ -532,4 +532,22 @@ class PrettyPageHandler extends Handler
     {
         $this->addResourcePath($resourcesPath);
     }
+
+    /**
+     * separate message for research
+     */
+    public static function serializeMessage($message)
+    {
+        return str_replace(" ", "+", $message);
+    }
+
+    /**
+     * google search
+     */
+    public static function searchGoogle($message)
+    {
+        return "https://www.google.com/#newwindow=1&q=".self::serializeMessage($message);
+    }
+
+    
 }
