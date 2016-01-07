@@ -549,5 +549,11 @@ class PrettyPageHandler extends Handler
         return "https://www.google.com/#newwindow=1&q=".self::serializeMessage($message);
     }
 
-    
+    /**
+     * stackoverflow search
+     */
+    public static function searchStackoverflow($message)
+    {
+        return "http://stackoverflow.com/search?q=".self::serializeMessage($message);
+    }
 }
