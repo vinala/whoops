@@ -335,12 +335,12 @@ pre.prettyprint, code.prettyprint {
   }
 
   .linenums li.current{
-    background: rgba(255, 100, 100, .07);
+    background: rgba(255, 47, 108, .1);
     padding-top: 4px;
     padding-left: 1px;
   }
     .linenums li.current.active {
-      background: rgba(255, 100, 100, .17);
+      background: rgba(255, 47, 108, .4);
     }
 
 #plain-exception {
