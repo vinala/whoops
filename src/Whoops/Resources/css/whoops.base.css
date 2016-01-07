@@ -578,3 +578,59 @@ pre.sf-dump {
    color: #607D8B;
    border-left: 5px solid #455A64;
 }
+
+.search_link
+{
+  display: inline-block;
+}
+
+.search_container
+{
+  margin-left: 40px;
+}
+
+.google_logo
+{
+  background-image: url(vendor/fiesta/whoops/src/Whoops/Resources/images/google-logo.png);
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin-left: -15px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.search_small_container
+{
+  background: #ecf0f1;
+  width: 240px;
+  height: 80px;
+  overflow: hidden;
+  border:1px solid #d5d7d7;
+  margin-right: 5px;
+}
+
+.search_small_container:hover
+{
+  background: #e5e6e7;
+}
+
+.search_text
+{
+  color: black;
+  font-size: 15px;
+  margin: 17px ;
+}
+
+.so_logo
+{
+  background-image: url(vendor/fiesta/whoops/src/Whoops/Resources/images/so-logo.png);
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin-left: -3px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+
