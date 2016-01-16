@@ -294,7 +294,7 @@ header {
     font-weight: 300;
   }
   .data-table label.empty {
-	  display: inline;
+    display: inline;
   }
 
 .handler {
@@ -344,13 +344,13 @@ pre.prettyprint, code.prettyprint {
     }
 
 #plain-exception {
-	display: none;
+  display: none;
 }
 
 #copy-button {
-	float: right;
-	cursor: pointer;
-	border: 0;
+  float: right;
+  cursor: pointer;
+  border: 0;
 }
 
 .clipboard {
@@ -395,8 +395,8 @@ kbd {
 /* Expand the spacing in the details section */
 @media (min-width: 1000px) {
   .details, .frame-code {
-    padding: 20px 40px;
-    margin-bottom: 60px;
+    padding: 0px 40px;
+    
   }
 
   .details-container {
