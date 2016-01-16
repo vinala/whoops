@@ -396,7 +396,7 @@ kbd {
 @media (min-width: 1000px) {
   .details, .frame-code {
     padding: 0px 40px;
-    
+    padding-bottom: 20px;
   }
 
   .details-container {
