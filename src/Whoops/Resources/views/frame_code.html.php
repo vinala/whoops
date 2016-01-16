@@ -62,4 +62,14 @@
 
       </div>
   <?php endforeach ?>
+  <div class="help">
+    <div class="label">Help : 
+      <a href="<?php echo Whoops\Handler\PrettyPageHandler::searchGoogle($message) ?>" target="_blank" title="Search for this error in Google">
+        <div class="help_icon help_google"></div>
+      </a>
+      <a href="<?php echo Whoops\Handler\PrettyPageHandler::searchStackoverflow($message) ?>" target="_blank" title="Search for this error in Stackoverflow">
+        <div class="help_icon help_so"></div>
+      </a>
+    </div>
+  </div>
 </div>

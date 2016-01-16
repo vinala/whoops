@@ -1,17 +1,3 @@
-<div class="search_container">
-  <a href="<?php echo Whoops\Handler\PrettyPageHandler::searchGoogle($message) ?>" target="_blank" class="search_link">
-    <div class="search_small_container">
-      <div class="google_logo"></div>
-      <div class="search_text">Search for this error in Google</div>
-    </div>
-  </a>
-  <a href="<?php echo Whoops\Handler\PrettyPageHandler::searchStackoverflow($message) ?>" target="_blank" class="search_link">
-    <div class="search_small_container">
-      <div class="so_logo"></div>
-      <div class="search_text">Search for this error in Stackoverflow</div>
-    </div>
-  </a>
-</div>
 <?php /* List data-table values, i.e: $_SERVER, $_GET, .... */ ?>
 <div class="details">
   <h2 class="details-heading">Environment &amp; details:</h2>

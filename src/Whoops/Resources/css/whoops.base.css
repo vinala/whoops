@@ -579,58 +579,48 @@ pre.sf-dump {
    border-left: 5px solid #455A64;
 }
 
-.search_link
+.help
 {
+  margin-bottom: 20px;
+  background-color: #f44336;
+  height: 40px;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.help>.label
+{
+  margin: 0px 20px;
   display: inline-block;
+  position: relative;
+  color: white;
+  font-size: 17px;
 }
 
-.search_container
+.help_icon
 {
-  margin-left: 40px;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: cover;
+  margin-left: 15px;
+  border-radius: 3px;
 }
 
-.google_logo
+.help_icon:hover
+{
+  background-color: rgba(0,0,0,.3);
+}
+
+.help_google
 {
   background-image: url(vendor/fiesta/whoops/src/Whoops/Resources/images/google-logo.png);
-  width: 80px;
-  height: 80px;
-  float: left;
-  margin-left: -15px;
-  background-size: cover;
-  margin-right: 10px;
 }
 
-.search_small_container
-{
-  background: #ecf0f1;
-  width: 240px;
-  height: 80px;
-  overflow: hidden;
-  border:1px solid #d5d7d7;
-  margin-right: 5px;
-}
-
-.search_small_container:hover
-{
-  background: #e5e6e7;
-}
-
-.search_text
-{
-  color: black;
-  font-size: 15px;
-  margin: 17px ;
-}
-
-.so_logo
+.help_so
 {
   background-image: url(vendor/fiesta/whoops/src/Whoops/Resources/images/so-logo.png);
-  width: 80px;
-  height: 80px;
-  float: left;
-  margin-left: -3px;
-  background-size: cover;
-  margin-right: 10px;
 }
-
 
