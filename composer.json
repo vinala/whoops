@@ -1,8 +1,8 @@
 {
-    "name": "fiesta/whoops",
+    "name": "lighty/whoops",
     "license": "MIT",
     "description": "php error handling for cool kids",
-    "keywords": ["library", "error", "handling", "exception", "whoops", "zf2"],
+    "keywords": ["library", "error", "handling", "exception", "whoops", "zf2", "framework", "lighty"],
     "homepage": "https://github.com/filp/whoops",
     "authors": [
         {
