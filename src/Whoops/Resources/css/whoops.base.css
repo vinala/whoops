@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'segoe';
-  src: url('vendor/fiesta/whoops/src/Whoops/Resources/fonts/segoeuil.ttf') format('truetype');
+  src: url('vendor/lighty/whoops/src/Whoops/Resources/fonts/segoeuil.ttf') format('truetype');
 }
 
 .cf:before, .cf:after {content: " ";display: table;} .cf:after {clear: both;} .cf {*zoom: 1;}
@@ -616,11 +616,11 @@ pre.sf-dump {
 
 .help_google
 {
-  background-image: url(vendor/fiesta/whoops/src/Whoops/Resources/images/google-logo.png);
+  background-image: url(vendor/lighty/whoops/src/Whoops/Resources/images/google-logo.png);
 }
 
 .help_so
 {
-  background-image: url(vendor/fiesta/whoops/src/Whoops/Resources/images/so-logo.png);
+  background-image: url(vendor/lighty/whoops/src/Whoops/Resources/images/so-logo.png);
 }
 

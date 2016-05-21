@@ -15,4 +15,4 @@
     </span>
   </div>
 <?php endforeach ?>
-<img class="mini_logo" src="vendor/fiesta/whoops/src/Whoops/Resources/images/logo.png"/>
+<img class="mini_logo" src="vendor/lighty/whoops/src/Whoops/Resources/images/logo.png"/>
