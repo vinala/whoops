@@ -12,6 +12,7 @@ use Exception;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Whoops\Exception\Frame;
+use Vinala\Kernel\MVC\View\View;
 
 /**
 * Handler outputing plaintext error messages. Can be used
@@ -324,45 +325,67 @@ class PlainTextHandler extends Handler
 
         if(! is_null ($exception)) 
             {
-                $msg=$this->msg;
-                $bg_color=$this->bg_color;
-                //include_once '/core/Access/ErrorDisplayer/simple.php';
-                ?>
-                <head>
-                    <meta charset="utf-8"/>
-                    <title><?php echo $msg ?></title>
-                    <style type="text/css">
-                    body
+                $showed = false;
+
+                if(isset($exception->view))
+                {
+                    if(View::exists($exception->view))
                     {
-                        background: #e9e9e9;
-                        background: <?php echo $bg_color ?>;
-                        margin: 0px;
-                        padding: 0px;
+                        view($exception->view);    
+                        $showed = true;
                     }
+                }
 
-                    div 
+                if(! $showed)
+                {
+                    if(View::exists('errors.regular'))
                     {
-                        box-shadow: 0px 3px 6px 3px rgba(0,0,0,0.2);
-                        border:1px solid gray;
-                        border-radius:5px;
-                        display: inline-block;
-                        padding:30px;
-                        font-size: 16px;
-                        font: 20px Georgia, "Times New Roman", Times, serif;
-                        width: 460px;
-                        margin: 60px auto;
-                        display: block;
-                        background: white;
+                        view('errors.regular');
+                        $showed = true;
                     }
-                    </style>
+                }
 
-                </head>
-                <body>
-                    <div><?php echo $msg ?></div>
-                </body>
+                if(! $showed)
+                {
+                    $msg=$this->msg;
+                    $bg_color=$this->bg_color;
+                    //include_once '/core/Access/ErrorDisplayer/simple.php';
+                    ?>
+                    <head>
+                        <meta charset="utf-8"/>
+                        <title><?php echo $msg ?></title>
+                        <style type="text/css">
+                        body
+                        {
+                            background: #e9e9e9;
+                            background: <?php echo $bg_color ?>;
+                            margin: 0px;
+                            padding: 0px;
+                        }
 
-                <?php
+                        div 
+                        {
+                            box-shadow: 0px 3px 6px 3px rgba(0,0,0,0.2);
+                            border:1px solid gray;
+                            border-radius:5px;
+                            display: inline-block;
+                            padding:30px;
+                            font-size: 16px;
+                            font: 20px Georgia, "Times New Roman", Times, serif;
+                            width: 460px;
+                            margin: 60px auto;
+                            display: block;
+                            background: white;
+                        }
+                        </style>
 
+                    </head>
+                    <body>
+                        <div><?php echo $msg ?></div>
+                    </body>
+
+                    <?php
+                }
             }
         return Handler::QUIT;
         if (! $this->canOutput()) {
