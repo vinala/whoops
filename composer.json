@@ -1,5 +1,5 @@
 {
-    "name": "lighty/whoops",
+    "name": "vinala/whoops",
     "license": "MIT",
     "description": "php error handling for cool kids",
     "keywords": ["library", "error", "handling", "exception", "whoops", "zf2", "framework", "lighty"],
