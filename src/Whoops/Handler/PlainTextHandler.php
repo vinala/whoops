@@ -308,23 +308,13 @@ class PlainTextHandler extends Handler
 
         $exception = $this->getException();
 
-        // $response = sprintf("%s: %s in file %s on line %d%s\n",
-        //         get_class($exception),
-        //         $exception->getMessage(),
-        //         $exception->getFile(),
-        //         $exception->getLine(),
-        //         // $this->getTraceOutput()
-        //         null
-        //     );
-
-        //var_dump($exception);
-        // echo "1";
         if ($this->getLogger()) {
             $this->getLogger()->error($response);
         }
 
         if(! is_null ($exception)) 
             {
+                clear();
                 $showed = false;
 
                 if(isset($exception->view))
@@ -336,11 +326,13 @@ class PlainTextHandler extends Handler
                     }
                 }
 
+                $nest = __DIR__.'/../../../../../../app/views/';
+
                 if(! $showed)
                 {
-                    if(View::exists(config('error.regular')))
+                    if(View::exists(config('error.regular') , $nest))
                     {
-                        view(config('error.regular'))->show();
+                        view(config('error.regular') , [] , $nest)->show();
                         $showed = true;
                     }
                 }
@@ -349,7 +341,6 @@ class PlainTextHandler extends Handler
                 {
                     $msg=$this->msg;
                     $bg_color=$this->bg_color;
-                    //include_once '/core/Access/ErrorDisplayer/simple.php';
                     ?>
 
                             <head>
@@ -363,7 +354,7 @@ class PlainTextHandler extends Handler
 
                                     body
                                     {
-                                        background: #5b1c79;
+                                        background: #26324f;
                                         margin: 0px;
                                         padding: 0px;
                                     }
