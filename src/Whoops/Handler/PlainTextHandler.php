@@ -12,7 +12,7 @@ use Exception;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Whoops\Exception\Frame;
-use Vinala\Kernel\MVC\View\View;
+use Vinala\Kernel\MVC\View;
 
 /**
 * Handler outputing plaintext error messages. Can be used
@@ -331,16 +331,16 @@ class PlainTextHandler extends Handler
                 {
                     if(View::exists($exception->view))
                     {
-                        view($exception->view);    
+                        view($exception->view)->show();    
                         $showed = true;
                     }
                 }
 
                 if(! $showed)
                 {
-                    if(View::exists('errors.regular'))
+                    if(View::exists(config('error.regular')))
                     {
-                        view('errors.regular');
+                        view(config('error.regular'))->show();
                         $showed = true;
                     }
                 }
