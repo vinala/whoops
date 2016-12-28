@@ -326,7 +326,7 @@ class PlainTextHandler extends Handler
                     }
                 }
 
-                $nest = __DIR__.'/../../../../../../app/views/';
+                $nest = __DIR__.'/../../../../../../app/';
 
                 if(! $showed)
                 {
