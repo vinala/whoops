@@ -314,8 +314,10 @@ class PlainTextHandler extends Handler
 
         if(! is_null ($exception)) 
             {
-                clear();
+
                 $showed = false;
+
+                $this->root();
 
                 if(isset($exception->view))
                 {
@@ -400,4 +402,35 @@ class PlainTextHandler extends Handler
 
         return Handler::QUIT;
     }
+
+
+    /**
+    * Set the app root
+    *
+    * @param string $url
+    * @return string
+    */
+    protected function root()
+    {
+        if(isset($_GET['_framework_url_']))
+        {
+            $url = $_GET['_framework_url_'];
+        }
+        else return false;
+
+        $parts = explode('/', $url);
+        $count = count($parts)-2;
+        //
+        $path = $parts > 1 ? '../' : '';
+
+        for ($i=0; $i <$count; $i++) 
+        { 
+            $path .= '../';
+        }
+
+        \Vinala\Kernel\Foundation\Application::$path = $path;
+        echo($path);
+        return $path;
+    }
+    
 }
