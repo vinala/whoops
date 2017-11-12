@@ -328,13 +328,13 @@ class PlainTextHandler extends Handler
                     }
                 }
 
-                $nest = __DIR__.'/../../../../../../app/';
+                $main_nest = __DIR__.'/../../../../../../';
 
                 if(! $showed)
                 {
-                    if(View::exists(config('error.regular') , $nest))
+                    if(View::exists(config('error.regular') , $main_nest))
                     {
-                        view(config('error.regular') , [] , $nest)->show();
+                        view(config('error.regular') , [] , $main_nest)->show();
                         $showed = true;
                     }
                 }
@@ -429,7 +429,6 @@ class PlainTextHandler extends Handler
         }
 
         \Vinala\Kernel\Foundation\Application::$path = $path;
-        echo($path);
         return $path;
     }
     
